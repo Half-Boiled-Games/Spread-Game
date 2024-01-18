@@ -13,7 +13,11 @@ public class Player : MonoBehaviour
     ///Player Input Actions
     InputActions actions;
 
-        ///Player States
+    public GameObject butterTrailPrefab;
+    public float trailTimer = 0f;
+    public float trailFrequency = .1f;
+
+    ///Player States
     enum PlayerState
     {
         Controlling,
@@ -142,6 +146,13 @@ public class Player : MonoBehaviour
             default:
                 Debug.LogError("Player reached bad state: \"" + currentState + "\" in Update");
                 break;
+        }
+
+        trailTimer -= Time.deltaTime;
+        if (trailTimer <= 0f)
+        {
+            Instantiate(butterTrailPrefab, transform.position, Quaternion.identity);
+            trailTimer = trailFrequency;
         }
 
 
