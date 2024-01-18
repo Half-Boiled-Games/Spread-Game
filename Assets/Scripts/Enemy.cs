@@ -35,6 +35,8 @@ public abstract class Enemy : MonoBehaviour
 
     EnemyState currentState;
 
+    Vector3 moveVector;
+
 
     // Start is called before the first frame update
     void Start()
@@ -43,19 +45,35 @@ public abstract class Enemy : MonoBehaviour
         currentState = EnemyState.Active;
         attackTimer = 0f;
         currentKOTime = 0f;
+        moveVector = Vector3.zero;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (IsKnockedOut())
+
+        if (currentKOTime > koTime)
         {
-            Knockout();
+            currentKOTime -= Time.deltaTime;
         }
+
+        if (attackTimer > attackCooldown)
+        {
+            attackTimer -= Time.deltaTime;
+        }
+
+
 
         switch(currentState)
         {
             case EnemyState.Active:
+                if (IsKnockedOut())
+                {
+                    Knockout();
+                }
+
+                // TODO Put logic here for attack and movement checks
+
                 break;
             case EnemyState.Attacking:
                 break;
@@ -68,15 +86,27 @@ public abstract class Enemy : MonoBehaviour
         }
     }
 
+    /*
+     * Attacks a player
+     */
     public abstract void Attack();
 
+    /*
+     * Checks if the enemy is knockout. Returns True if the enemy's knockout criteria is met, False otherwise
+     */
     public abstract bool IsKnockedOut();
+
+    /*
+     * Sets an enemy in the Active state to the KnockedOut state
+     */
     public void Knockout()
     {
         currentState = EnemyState.KnockedOut;
         currentKOTime = koTime;
     }
-
+    /*
+    * Sets an enemy in the KnockedOut state to the Active state
+    */
     public void WakeUp()
     {
         currentState = EnemyState.Active;
