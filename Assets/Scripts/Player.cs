@@ -31,6 +31,8 @@ public class Player : MonoBehaviour
 
     float fireTimer;
 
+    int maxHealth = 100;
+    int health;
 
     //Player Control Settings Variables
     /// Move settings
@@ -90,6 +92,7 @@ public class Player : MonoBehaviour
         dodgeInvincibility = false;
 
         fireTimer = 0.0f;
+        health = maxHealth;
     }
 
     void Update()
@@ -210,6 +213,15 @@ public class Player : MonoBehaviour
                 break;
         }
 
+    }
+
+    public void TakeDamage(int damage)
+    {
+        health -= damage;
+        if (health <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void OnEnable()
