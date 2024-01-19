@@ -20,18 +20,18 @@ public class Charger : Enemy
 
     public override void Attack()
     {
-        //The fast part of the dodge
+        //The fast part of the charge
         if (attackCooldown >= chargeSpeedTime)
         {
             transform.position += moveVector * moveSpeed * chargeSpeed * Time.deltaTime;
         }
-        //The recovery of the dodge
+        //The recovery of the charge
         else if (attackCooldown >= chargeTotalTime)
         {
             GetComponent<SpriteRenderer>().color = Color.red;
             transform.position += moveVector * moveSpeed * chargeRecover * Time.deltaTime;
         }
-        //Triggers when dodge is over
+        //Triggers when charge is over
         else
         {
             GetComponent<SpriteRenderer>().color = Color.white;
@@ -40,6 +40,9 @@ public class Charger : Enemy
 
     }
 
+    /*
+     * Checks for collisions with the player, if the charger collides with the player, the player takes damage.
+     */
     private void OnCollision2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Player")
@@ -66,7 +69,7 @@ public class Charger : Enemy
         base.koTime = 10f;
         base.attackCooldown = 5f;
         base.damage = 50;
-        base.moveSpeed = 50;
+        base.moveSpeed = 50f;
     }
 
     // Update is called once per frame

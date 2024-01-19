@@ -214,7 +214,9 @@ public class Player : MonoBehaviour
         }
 
     }
-
+    /*
+     * Deals a specified amount of damage to the player
+     */
     public void TakeDamage(int damage)
     {
         health -= damage;
