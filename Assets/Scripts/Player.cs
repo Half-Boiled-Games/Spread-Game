@@ -24,7 +24,6 @@ public class Player : MonoBehaviour
 
         ///Gameplay variables
     Vector3 moveVector;
-    Vector3 fireVector;
 
     float dodgeTimer;
     bool dodgeInvincibility;
@@ -75,7 +74,6 @@ public class Player : MonoBehaviour
         actions.Player.Fire.performed += OnFire;
         actions.Player.Dodge.performed += OnDodge;
 
-
     }
 
     void Start()
@@ -84,7 +82,6 @@ public class Player : MonoBehaviour
         currentState = PlayerState.Controlling;
 
         moveVector = Vector3.zero;
-        fireVector = Vector3.zero;
 
         dodgeTimer = 0.0f;
         dodgeInvincibility = false;
@@ -104,10 +101,14 @@ public class Player : MonoBehaviour
         switch (currentState)
         {
             case PlayerState.Controlling:
+                
+                //Moving and firing
                 moveVector = actions.Player.Move.ReadValue<Vector2>();
-                fireVector = Camera.main.ScreenToWorldPoint(actions.Player.Aim.ReadValue<Vector2>()) - transform.position;
-
                 transform.position += moveVector * speed * Time.deltaTime;
+
+                
+                //Spreading function
+
                 break;
 
             case PlayerState.Dodging:
@@ -159,6 +160,7 @@ public class Player : MonoBehaviour
                 //Checks if the delay has passed between shots
                 if (fireTimer >= fireDelay)
                 {
+                    Vector3 fireVector = Camera.main.ScreenToWorldPoint(actions.Player.Aim.ReadValue<Vector2>()) - transform.position;
                     controller.AddPlayerProjectile(fireVector);
                     fireTimer = 0.0f;
                 }

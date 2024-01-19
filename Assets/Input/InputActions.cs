@@ -71,6 +71,15 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Spread"",
+                    ""type"": ""Button"",
+                    ""id"": ""21072fd2-8766-434f-8d36-fe2b05adcaa9"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -238,6 +247,28 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""action"": ""Dodge"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7b979e9e-4cec-4856-a349-67af63d3df24"",
+                    ""path"": ""<Keyboard>/shift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Spread"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5bbfa6d6-f7e7-48c1-9c24-7ef07f2a2b5f"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Spread"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -279,6 +310,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         m_Player_Aim = m_Player.FindAction("Aim", throwIfNotFound: true);
         m_Player_Fire = m_Player.FindAction("Fire", throwIfNotFound: true);
         m_Player_Dodge = m_Player.FindAction("Dodge", throwIfNotFound: true);
+        m_Player_Spread = m_Player.FindAction("Spread", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -345,6 +377,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Aim;
     private readonly InputAction m_Player_Fire;
     private readonly InputAction m_Player_Dodge;
+    private readonly InputAction m_Player_Spread;
     public struct PlayerActions
     {
         private @InputActions m_Wrapper;
@@ -354,6 +387,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         public InputAction @Aim => m_Wrapper.m_Player_Aim;
         public InputAction @Fire => m_Wrapper.m_Player_Fire;
         public InputAction @Dodge => m_Wrapper.m_Player_Dodge;
+        public InputAction @Spread => m_Wrapper.m_Player_Spread;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -378,6 +412,9 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             @Dodge.started += instance.OnDodge;
             @Dodge.performed += instance.OnDodge;
             @Dodge.canceled += instance.OnDodge;
+            @Spread.started += instance.OnSpread;
+            @Spread.performed += instance.OnSpread;
+            @Spread.canceled += instance.OnSpread;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -397,6 +434,9 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             @Dodge.started -= instance.OnDodge;
             @Dodge.performed -= instance.OnDodge;
             @Dodge.canceled -= instance.OnDodge;
+            @Spread.started -= instance.OnSpread;
+            @Spread.performed -= instance.OnSpread;
+            @Spread.canceled -= instance.OnSpread;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -439,5 +479,6 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         void OnAim(InputAction.CallbackContext context);
         void OnFire(InputAction.CallbackContext context);
         void OnDodge(InputAction.CallbackContext context);
+        void OnSpread(InputAction.CallbackContext context);
     }
 }
