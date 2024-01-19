@@ -31,8 +31,10 @@ public class Player : MonoBehaviour
 
     float fireTimer;
 
+    [SerializeField]
     int maxHealth = 100;
-    int health;
+
+    public int health;
 
     //Player Control Settings Variables
     /// Move settings

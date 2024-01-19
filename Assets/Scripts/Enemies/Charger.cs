@@ -45,7 +45,8 @@ public class Charger : Enemy
      */
     private void OnCollision2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Player")
+        //base.currentState == EnemyState.Attacking &&
+        if ( collision.gameObject.tag == "Player")
         {
             base.player.TakeDamage(damage);
         }

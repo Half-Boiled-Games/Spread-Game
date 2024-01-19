@@ -150,8 +150,8 @@ Transform:
   m_GameObject: {fileID: 89568012}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 8.18, y: 1.61, z: 0.0025544697}
-  m_LocalScale: {x: 5.026722, y: 6.2685986, z: 1}
+  m_LocalPosition: {x: 6.57, y: 0.3, z: 0.0025544697}
+  m_LocalScale: {x: 2.693455, y: 2.122649, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1282945282}
@@ -313,29 +313,14 @@ GameObject:
   m_Component:
   - component: {fileID: 1152637246}
   - component: {fileID: 1152637245}
-  - component: {fileID: 1152637244}
   - component: {fileID: 1152637247}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1152637244
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1152637241}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2afbe70b572edac49873615d874cf7b6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 100
-  health: 100
 --- !u!114 &1152637245
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -349,6 +334,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 731346625}
+  maxHealth: 100
+  health: 0
   speed: 5
   dodgeSpeed: 1.5
   dodgeSlow: 0.7
@@ -401,8 +388,8 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
+  m_IsTrigger: 1
+  m_UsedByEffector: 1
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
@@ -416,7 +403,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1282945282}
-  - component: {fileID: 1282945281}
+  - component: {fileID: 1282945283}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -424,20 +411,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1282945281
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1282945280}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bed33bcbe597db049b62197b51d62bae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 20
-  health: {fileID: 1152637244}
 --- !u!4 &1282945282
 Transform:
   m_ObjectHideFlags: 0
@@ -454,6 +427,24 @@ Transform:
   - {fileID: 89568013}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1282945283
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1282945280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60d6cca92f16a844a89e0d395e7db5c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1152637245}
+  damage: 20
+  moveSpeed: 1
+  attackCooldown: 20
+  koTime: 0
+  currentState: 0
 --- !u!1 &1610012814
 GameObject:
   m_ObjectHideFlags: 0
