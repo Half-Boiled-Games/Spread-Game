@@ -4,8 +4,8 @@ using UnityEngine;
 
 public abstract class Enemy : MonoBehaviour
 {
-
-    enum EnemyState
+    public Player player;
+    public enum EnemyState
     {
         Attacking,
         KnockedOut,
@@ -13,35 +13,29 @@ public abstract class Enemy : MonoBehaviour
     }
 
     [SerializeField]
-    int maxHealth;
-
-    int health;
+    protected int damage;
 
     [SerializeField]
-    int damage;
-
-    [SerializeField]
-    float moveSpeed;
+    protected float moveSpeed;
 
     float attackTimer;
 
     [SerializeField]
-    float attackCooldown;
+    protected float attackCooldown;
 
     [SerializeField]
-    float koTime;
+    protected float koTime;
 
     float currentKOTime;
 
-    EnemyState currentState;
+    public EnemyState currentState;
 
-    Vector3 moveVector;
+    protected Vector3 moveVector;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        health = maxHealth;
         currentState = EnemyState.Active;
         attackTimer = 0f;
         currentKOTime = 0f;
@@ -72,7 +66,11 @@ public abstract class Enemy : MonoBehaviour
                     Knockout();
                 }
 
-                // TODO Put logic here for attack and movement checks
+                if (canAttack())
+                {
+                    currentState = EnemyState.Attacking;
+                    Attack();
+                }
 
                 break;
             case EnemyState.Attacking:
@@ -90,6 +88,11 @@ public abstract class Enemy : MonoBehaviour
      * Attacks a player
      */
     public abstract void Attack();
+
+    /*
+     * Checks if the enemy can attack the player
+     */
+    public abstract bool canAttack();
 
     /*
      * Checks if the enemy is knockout. Returns True if the enemy's knockout criteria is met, False otherwise
