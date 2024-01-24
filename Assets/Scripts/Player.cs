@@ -20,6 +20,8 @@ public class Player : MonoBehaviour
         Dodging,
     }
 
+    public Rigidbody2D rb;
+
     PlayerState currentState;
 
         ///Gameplay variables
@@ -70,7 +72,10 @@ public class Player : MonoBehaviour
 
 
 
-
+    private void Move()
+    {
+        rb.velocity = new Vector2(7*moveVector.x, 7*moveVector.y);
+    }
 
     private void Awake()
     {
@@ -112,7 +117,8 @@ public class Player : MonoBehaviour
                 moveVector = actions.Player.Move.ReadValue<Vector2>();
                 fireVector = Camera.main.ScreenToWorldPoint(actions.Player.Aim.ReadValue<Vector2>()) - transform.position;
 
-                transform.position += moveVector * speed * Time.deltaTime;
+                //transform.position += moveVector * speed * Time.deltaTime;
+                Move();
                 break;
 
             case PlayerState.Dodging:
