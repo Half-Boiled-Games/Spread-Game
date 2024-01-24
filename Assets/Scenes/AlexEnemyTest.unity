@@ -294,8 +294,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 5
-  radius: 0.2
-  height: 0.5
+  radius: 2
+  height: 1
   canMove: 1
   maxSpeed: 2
   gravity: {x: 0, y: 0, z: 0}
@@ -310,15 +310,15 @@ MonoBehaviour:
   autoRepath:
     mode: 2
     interval: 0.5
-    sensitivity: 10
+    sensitivity: 4.4
     maximumInterval: 2
     visualizeSensitivity: 0
   targetCompatibility: {fileID: 0}
   maxAcceleration: -2.5
   rotationSpeed: 360
-  slowdownDistance: 0.6
-  pickNextWaypointDist: 2
-  endReachedDistance: 0.2
+  slowdownDistance: 0
+  pickNextWaypointDist: 3
+  endReachedDistance: 2
   alwaysDrawGizmos: 0
   slowWhenNotFacingTarget: 1
   whenCloseToDestination: 0
@@ -424,9 +424,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 6.5, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 1.0779326
 --- !u!1 &731346623
 GameObject:
   m_ObjectHideFlags: 0
@@ -781,15 +781,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6451430000541023341, guid: 0c2f734812fb60f49a02509d26fe6ade, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.42395172
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6451430000541023341, guid: 0c2f734812fb60f49a02509d26fe6ade, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.21430668
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6451430000541023341, guid: 0c2f734812fb60f49a02509d26fe6ade, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.0025544697
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6451430000541023341, guid: 0c2f734812fb60f49a02509d26fe6ade, type: 3}
       propertyPath: m_LocalRotation.w
@@ -823,10 +823,17 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1152637245}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4847872670677745944, guid: 0c2f734812fb60f49a02509d26fe6ade, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 368526445722734200, guid: 0c2f734812fb60f49a02509d26fe6ade, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 638236701}
+    - targetCorrespondingSourceObject: {fileID: 368526445722734200, guid: 0c2f734812fb60f49a02509d26fe6ade, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 638236702}
     - targetCorrespondingSourceObject: {fileID: 368526445722734200, guid: 0c2f734812fb60f49a02509d26fe6ade, type: 3}
       insertIndex: -1
       addedObject: {fileID: 638236697}
@@ -836,12 +843,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 368526445722734200, guid: 0c2f734812fb60f49a02509d26fe6ade, type: 3}
       insertIndex: -1
       addedObject: {fileID: 638236700}
-    - targetCorrespondingSourceObject: {fileID: 368526445722734200, guid: 0c2f734812fb60f49a02509d26fe6ade, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 638236702}
-    - targetCorrespondingSourceObject: {fileID: 368526445722734200, guid: 0c2f734812fb60f49a02509d26fe6ade, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 638236701}
   m_SourcePrefab: {fileID: 100100000, guid: 0c2f734812fb60f49a02509d26fe6ade, type: 3}
 --- !u!1001 &5127753801315761626
 PrefabInstance:
