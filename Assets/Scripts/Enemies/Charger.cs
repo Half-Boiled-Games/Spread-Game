@@ -18,6 +18,8 @@ public class Charger : Enemy
     // The amount of time the entire charge lasts
     float chargeTotalTime = 0.6f;
 
+    bool koStatus = false;
+
     public override void Attack()
     {
         //The fast part of the charge
@@ -50,6 +52,10 @@ public class Charger : Enemy
         {
             base.player.TakeDamage(damage);
         }
+        if ( collision.gameObject.tag == "Wall")
+        {
+            koStatus = true;
+        }
     }
 
     public override bool canAttack()
@@ -61,7 +67,7 @@ public class Charger : Enemy
     public override bool IsKnockedOut()
     {
         // TODO Conditional checks
-        return false;
+        return koStatus;
     }
 
     // Start is called before the first frame update
