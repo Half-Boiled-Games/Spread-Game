@@ -68,7 +68,7 @@ public class Teleporter : Enemy
     }
 
     // Update is called once per frame
-    void Update()
+    new void Update()
     {   
         if (timer < teleRate)
         {
@@ -95,6 +95,8 @@ public class Teleporter : Enemy
                 timer = 0;
             }
         }
+
+        base.Update();
     }
 
     void spawnWizard(){
