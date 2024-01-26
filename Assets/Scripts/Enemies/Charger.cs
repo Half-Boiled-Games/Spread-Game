@@ -45,14 +45,14 @@ public class Charger : Enemy
     /*
      * Checks for collisions with the player, if the charger collides with the player, the player takes damage.
      */
-    private void OnCollision2D(Collision2D collision)
+    public void OnCollision2D(Collision2D collision)
     {
         //base.currentState == EnemyState.Attacking &&
-        if ( collision.gameObject.tag == "Player")
+        if (collision.gameObject.CompareTag("Player"))
         {
             base.player.TakeDamage(damage);
         }
-        if ( collision.gameObject.tag == "Wall")
+        if (collision.gameObject.CompareTag("Wall"))
         {
             koStatus = true;
         }
