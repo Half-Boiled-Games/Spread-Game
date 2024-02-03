@@ -9,6 +9,18 @@ public class Breadling : Enemy
         throw new System.NotImplementedException();
     }
 
+    /*
+    * Checks for collisions with the player, if the charger collides with the player, the player takes damage.
+    */
+    private void OnCollision2D(Collision2D collision)
+    {
+        //base.currentState == EnemyState.Attacking &&
+        if (collision.gameObject.tag == "Player")
+        {
+            base.player.TakeDamage(damage);
+        }
+    }
+
     public override bool canAttack()
     {
         return false;

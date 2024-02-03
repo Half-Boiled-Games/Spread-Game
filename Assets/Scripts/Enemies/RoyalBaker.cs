@@ -4,9 +4,14 @@ using UnityEngine;
 
 public class RoyalBaker : Enemy
 {
+    public GameObject breadling;
+
     public override void Attack()
     {
-        throw new System.NotImplementedException();
+        for(int i = 0; i < 3; i++)
+        {
+            Instantiate(breadling, transform.position, transform.rotation);
+        }
     }
 
     public override bool canAttack()
