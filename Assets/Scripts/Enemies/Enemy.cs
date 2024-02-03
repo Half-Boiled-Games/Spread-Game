@@ -43,7 +43,7 @@ public abstract class Enemy : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    protected void Update()
     {
 
         if (currentKOTime > koTime)
